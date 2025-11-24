@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detail Project | Syamsuardi</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        line-height: 1.6;
+        background: #0a0e27;
+        color: #e0e6ed;
+        overflow-x: hidden;
+      }
+
+      /* Navbar */
+      header {
+        background: rgba(10, 14, 39, 0.95);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(0, 188, 212, 0.1);
+        padding: 1rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      .navbar {
+        width: 90%;
+        max-width: 1200px;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.6rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, #00bcd4, #00e5ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        cursor: pointer;
+        text-decoration: none;
+      }
+
+      .back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: rgba(0, 188, 212, 0.1);
+        border: 1px solid rgba(0, 188, 212, 0.3);
+        color: #00bcd4;
+        padding: 0.7rem 1.5rem;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      .back-btn:hover {
+        background: linear-gradient(135deg, #00bcd4, #0097a7);
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 188, 212, 0.4);
+      }
+
+      /* Project Detail Container */
+      .project-detail {
+        width: 90%;
+        max-width: 1200px;
+        margin: 3rem auto;
+        padding: 3rem 0;
+      }
+
+      .project-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .project-header h1 {
+        font-size: 2.8rem;
+        background: linear-gradient(135deg, #00bcd4, #00e5ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 1rem;
+        font-weight: 700;
+      }
+
+      .project-tags {
+        display: flex;
+        gap: 0.7rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 1rem;
+      }
+
+      .project-tags span {
+        background: rgba(0, 188, 212, 0.1);
+        border: 1px solid rgba(0, 188, 212, 0.3);
+        color: #00bcd4;
+        padding: 0.5rem 1.2rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+
+      /* Project Image */
+      .project-image-main {
+        width: 100%;
+        max-height: 500px;
+        overflow: hidden;
+        border-radius: 20px;
+        margin-bottom: 3rem;
+        border: 1px solid rgba(0, 188, 212, 0.2);
+        box-shadow: 0 10px 40px rgba(0, 188, 212, 0.2);
+      }
+
+      .project-image-main img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* Project Content */
+      .project-content-detail {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 3rem;
+      }
+
+      .main-content {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(0, 188, 212, 0.2);
+        border-radius: 20px;
+        padding: 2.5rem;
+      }
+
+      .main-content h2 {
+        color: #00e5ff;
+        margin-bottom: 1.5rem;
+        font-size: 1.8rem;
+        font-weight: 600;
+      }
+
+      .main-content p {
+        color: #b8c5d6;
+        font-size: 1.05rem;
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+      }
+
+      .features-list {
+        list-style: none;
+        margin: 2rem 0;
+      }
+
+      .features-list li {
+        color: #b8c5d6;
+        padding: 0.8rem 0;
+        display: flex;
+        align-items: start;
+        gap: 1rem;
+        border-bottom: 1px solid rgba(0, 188, 212, 0.1);
+      }
+
+      .features-list li:last-child {
+        border-bottom: none;
+      }
+
+      .features-list i {
+        color: #00bcd4;
+        font-size: 1.2rem;
+        margin-top: 0.2rem;
+      }
+
+      /* Sidebar */
+      .sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .info-box {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(0, 188, 212, 0.2);
+        border-radius: 20px;
+        padding: 2rem;
+      }
+
+      .info-box h3 {
+        color: #00e5ff;
+        margin-bottom: 1.5rem;
+        font-size: 1.3rem;
+        font-weight: 600;
+      }
+
+      .info-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.8rem 0;
+        border-bottom: 1px solid rgba(0, 188, 212, 0.1);
+      }
+
+      .info-item:last-child {
+        border-bottom: none;
+      }
+
+      .info-label {
+        color: #00bcd4;
+        font-weight: 600;
+      }
+
+      .info-value {
+        color: #b8c5d6;
+      }
+
+      .btn-demo {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.7rem;
+        background: linear-gradient(135deg, #00bcd4, #0097a7);
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        width: 100%;
+        box-shadow: 0 10px 30px rgba(0, 188, 212, 0.3);
+        margin-top: 1rem;
+      }
+
+      .btn-demo:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(0, 188, 212, 0.5);
+      }
+
+      /* Screenshots Gallery */
+      .screenshots {
+        margin-top: 3rem;
+      }
+
+      .screenshots h2 {
+        color: #00e5ff;
+        margin-bottom: 2rem;
+        font-size: 1.8rem;
+        font-weight: 600;
+        text-align: center;
+      }
+
+      .screenshots-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .screenshot-item {
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+        border-radius: 15px;
+        border: 1px solid rgba(0, 188, 212, 0.2);
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .screenshot-item:hover {
+        transform: scale(1.05);
+        border-color: #00bcd4;
+        box-shadow: 0 10px 30px rgba(0, 188, 212, 0.3);
+      }
+
+      .screenshot-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* Footer */
+      footer {
+        background: rgba(10, 14, 39, 0.95);
+        border-top: 1px solid rgba(0, 188, 212, 0.1);
+        color: #b8c5d6;
+        text-align: center;
+        padding: 2rem 0;
+        font-size: 1rem;
+        margin-top: 5rem;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .project-content-detail {
+          grid-template-columns: 1fr;
+        }
+
+        .project-header h1 {
+          font-size: 2rem;
+        }
+
+        .navbar {
+          flex-direction: column;
+          gap: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <header>
+      <nav class="navbar">
+        <a href="index.html" class="logo">Syamsuardi</a>
+        <a href="index.html#projects" class="back-btn">
+          <i class="fas fa-arrow-left"></i>
+          <span>Kembali ke Portfolio</span>
+        </a>
+      </nav>
+    </header>
+
+    <!-- Project Detail -->
+    <section class="project-detail">
+      <div class="project-header">
+        <h1 id="project-title">Sistem Absensi Mahasiswa</h1>
+        <div class="project-tags" id="project-tags">
+          <span>PHP</span>
+          <span>MySQL</span>
+          <span>Bootstrap</span>
+        </div>
+      </div>
+
+      <div class="project-image-main">
+        <img id="main-image" src="assets/absensi.png" alt="Project Image" />
+      </div>
+
+      <div class="project-content-detail">
+        <div class="main-content">
+          <h2>Deskripsi Project</h2>
+          <p id="project-description">
+            Sistem Absensi Mahasiswa adalah aplikasi berbasis web yang
+            dikembangkan menggunakan PHP native dan MySQL. Aplikasi ini
+            dirancang untuk memudahkan proses pencatatan kehadiran mahasiswa di
+            kelas dengan sistem login multiuser yang membedakan hak akses antara
+            admin, dosen, dan mahasiswa.
+          </p>
+
+          <h2>Fitur Utama</h2>
+          <ul class="features-list" id="features-list">
+            <li>
+              <i class="fas fa-check-circle"></i>
+              <span
+                >Login multiuser dengan role Admin, Dosen, dan Mahasiswa</span
+              >
+            </li>
+            <li>
+              <i class="fas fa-check-circle"></i>
+              <span>Dashboard interaktif untuk monitoring kehadiran</span>
+            </li>
+            <li>
+              <i class="fas fa-check-circle"></i>
+              <span>Pencatatan absensi real-time dengan validasi</span>
+            </li>
+            <li>
+              <i class="fas fa-check-circle"></i>
+              <span>Laporan kehadiran dalam format Excel dan PDF</span>
+            </li>
+            <li>
+              <i class="fas fa-check-circle"></i>
+              <span>Manajemen mata kuliah dan jadwal perkuliahan</span>
+            </li>
+            <li>
+              <i class="fas fa-check-circle"></i>
+              <span>Notifikasi otomatis untuk mahasiswa yang sering absen</span>
+            </li>
+          </ul>
+
+          <h2>Teknologi yang Digunakan</h2>
+          <p id="technologies">
+            Project ini dibangun menggunakan teknologi PHP native untuk backend
+            logic, MySQL sebagai database management system, Bootstrap untuk
+            tampilan responsive, dan JavaScript untuk interaksi dinamis di sisi
+            client.
+          </p>
+        </div>
+
+        <aside class="sidebar">
+          <div class="info-box">
+            <h3>Informasi Project</h3>
+            <div class="info-item">
+              <span class="info-label">Kategori:</span>
+              <span class="info-value" id="category">Web Application</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Tahun:</span>
+              <span class="info-value" id="year">2024</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Status:</span>
+              <span class="info-value" id="status">Completed</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Durasi:</span>
+              <span class="info-value" id="duration">3 Bulan</span>
+            </div>
+            <a href="#" class="btn-demo" id="demo-link">
+              <i class="fas fa-external-link-alt"></i>
+              <span>Lihat Demo</span>
+            </a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>© 2025 Syamsuardi. Dibuat dengan ❤️ dan semangat belajar.</p>
+    </footer>
+
+    <script>
+      // Data untuk setiap project
+      const projectData = {
+        absensi: {
+          title: "Sistem Absensi Mahasiswa",
+          tags: ["PHP", "MySQL", "Bootstrap", "JavaScript"],
+          image: "assets/absensi.png",
+          description:
+            "Sistem Absensi Mahasiswa adalah aplikasi berbasis web yang dikembangkan menggunakan PHP native dan MySQL. Aplikasi ini dirancang untuk memudahkan proses pencatatan kehadiran mahasiswa di kelas dengan sistem login multiuser yang membedakan hak akses antara admin, dosen, dan mahasiswa.",
+          features: [
+            "Login multiuser dengan role Admin, Dosen, dan Mahasiswa",
+            "Dashboard interaktif untuk monitoring kehadiran",
+            "Pencatatan absensi real-time dengan validasi",
+            "Laporan kehadiran dalam format Excel dan PDF",
+            "Manajemen mata kuliah dan jadwal perkuliahan",
+            "Notifikasi otomatis untuk mahasiswa yang sering absen",
+          ],
+          technologies:
+            "Project ini dibangun menggunakan teknologi PHP native untuk backend logic, MySQL sebagai database management system, Bootstrap untuk tampilan responsive, dan JavaScript untuk interaksi dinamis di sisi client.",
+          category: "Web Application",
+          year: "2024",
+          status: "Completed",
+          duration: "3 Bulan",
+          demoLink: "#",
+        },
+        warkop: {
+          title: "Landing Page UMKM",
+          tags: ["HTML", "CSS", "JavaScript", "Responsive"],
+          image: "assets/warkop_site.png",
+          description:
+            "Landing Page UMKM adalah website promosi yang dirancang khusus untuk membantu pelaku usaha kecil menengah dalam memasarkan produk lokal mereka. Website ini memiliki tampilan yang elegan, modern, dan fully responsive untuk semua device.",
+          features: [
+            "Design modern dan elegan dengan color scheme profesional",
+            "Fully responsive untuk desktop, tablet, dan mobile",
+            "Gallery produk dengan lightbox effect",
+            "Formulir pemesanan terintegrasi",
+            "Google Maps integration untuk lokasi usaha",
+            "Optimasi SEO untuk mesin pencari",
+          ],
+          technologies:
+            "Dibangun menggunakan HTML5 untuk struktur semantic, CSS3 dengan Flexbox dan Grid untuk layout responsive, JavaScript vanilla untuk interaksi, dan optimasi performa dengan lazy loading images.",
+          category: "Landing Page",
+          year: "2024",
+          status: "Completed",
+          duration: "1 Bulan",
+          demoLink: "#",
+        },
+        portfolio: {
+          title: "Portfolio Interaktif",
+          tags: ["JavaScript", "CSS3", "HTML5", "Canvas API"],
+          image: "assets/portofolio.png",
+          description:
+            "Portfolio Interaktif adalah website personal portfolio dengan desain modern yang menampilkan karya dan skill secara menarik. Dilengkapi dengan animasi halus, efek parallax, dan tema dark mode yang nyaman untuk mata.",
+          features: [
+            "Animasi smooth scroll dan typing effect",
+            "Canvas animation untuk background starfield",
+            "Project showcase dengan hover effects",
+            "Contact form terintegrasi dengan Formspree",
+            "Social media integration",
+            "Performance optimization dengan lazy loading",
+          ],
+          technologies:
+            "Menggunakan HTML5, CSS3 dengan custom properties untuk theming, JavaScript ES6+ untuk logika interaksi, Canvas API untuk animasi background, dan Formspree untuk handling contact form.",
+          category: "Portfolio Website",
+          year: "2025",
+          status: "Completed",
+          duration: "2 Bulan",
+          demoLink: "index.html",
+        },
+      };
+
+      // Ambil parameter dari URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const projectId = urlParams.get("project") || "absensi";
+
+      // Load data project
+      const project = projectData[projectId];
+
+      if (project) {
+        document.getElementById("project-title").textContent = project.title;
+        document.getElementById("main-image").src = project.image;
+        document.getElementById("project-description").textContent =
+          project.description;
+        document.getElementById("technologies").textContent =
+          project.technologies;
+        document.getElementById("category").textContent = project.category;
+        document.getElementById("year").textContent = project.year;
+        document.getElementById("status").textContent = project.status;
+        document.getElementById("duration").textContent = project.duration;
+        document.getElementById("demo-link").href = project.demoLink;
+
+        // Update tags
+        const tagsContainer = document.getElementById("project-tags");
+        tagsContainer.innerHTML = project.tags
+          .map((tag) => `<span>${tag}</span>`)
+          .join("");
+
+        // Update features
+        const featuresList = document.getElementById("features-list");
+        featuresList.innerHTML = project.features
+          .map(
+            (feature) =>
+              `<li><i class="fas fa-check-circle"></i><span>${feature}</span></li>`
+          )
+          .join("");
+      }
+
+      // Update page title
+      document.title = `${project.title} | Syamsuardi`;
+    </script>
+  </body>
+</html>
